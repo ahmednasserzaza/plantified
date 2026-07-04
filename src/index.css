@@ -153,6 +153,7 @@ button {
 .header-inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 26px;
   height: 58px;
   padding-top: 12px;
@@ -167,7 +168,7 @@ button {
 }
 
 .main-nav {
-  flex: 1;
+  flex: 0 1 auto;
   position: relative;
   align-self: stretch;
   display: flex;
@@ -214,6 +215,7 @@ button {
 }
 
 .header-icons {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 22px;
@@ -279,8 +281,8 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-46%, -50%);
-  width: 560px;
-  height: 560px;
+  width: clamp(700px, 58vw, 700px);
+  height: clamp(700px, 58vw, 700px);
   border-radius: 50%;
   background: var(--sage-circle);
   pointer-events: none;
