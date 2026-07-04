@@ -1,0 +1,13 @@
+# Plantified
+
+> Plantified is a desk-plant shop landing page. It showcases low maintenance
+> plants for workspaces, a plant picker, care guidance, and a newsletter.
+
+## Sections
+
+- Home: hero — "Life is too short, Bring a green friend"
+- Plants: interactive picker featuring Spike the cactus and five other desk plants
+- Categories: plant personality cards (Ivy, Mint, Spike) with prices
+- Care steps: Unboxing, First Mist, Routine, Watch it grow
+- Seasonal care: watering, feeding, and light tips for all four seasons
+- Newsletter: email signup for plant care tips and delivery

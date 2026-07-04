@@ -1,0 +1,17 @@
+{
+  "name": "Plantified",
+  "short_name": "Plantified",
+  "description": "Indoor plant shop with expert care tips and fast delivery.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#1e3a2b",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
