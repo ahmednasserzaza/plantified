@@ -1,0 +1,1368 @@
+@font-face {
+  font-family: 'Tomorrow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Tomorrow-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Ubuntu-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Poppins-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Poppins-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Poppins-600.woff2') format('woff2');
+}
+
+:root {
+  --cream: #f9f6ef;
+  --ink: #454b42;
+  --muted: #616759;
+  --green: #346e3c;
+  --green-bright: #55804c;
+  --green-deep: #346e3c;
+  --green-deep-hover: #2a5a31;
+  --sage-circle: #e7eedc;
+  --sage-section: #eaf1e3;
+  --sage-blob: #edf2e3;
+  --sage-card: #edf2e4;
+  --sage-icon: #e3edd6;
+  --dark: #363D37;
+  --dark-deeper: #333e30;
+  --white: #ffffff;
+  --font-display: 'Tomorrow', 'Arial Black', sans-serif;
+  --font-logo: 'Ubuntu', 'Tomorrow', sans-serif;
+  --font-body: 'Poppins', 'Segoe UI', sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 10px 30px rgba(69, 75, 66, 0.1);
+  --shadow-chip: 0 4px 14px rgba(69, 75, 66, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: min(1060px, 92%);
+  margin-inline: auto;
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: var(--cream);
+  border-bottom: 1px solid #819e2633;
+  transition: box-shadow 0.35s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 6px 22px rgba(69, 75, 66, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  height: 58px;
+  padding-top: 12px;
+}
+
+.brand {
+  font-family: var(--font-logo);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.main-nav {
+  flex: 1;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 34px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  position: relative;
+  display: inline-block;
+  padding: 11px 2px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.25s ease, font-weight 0.1s ease;
+}
+
+.main-nav a:hover {
+  color: var(--green);
+}
+
+.main-nav a[aria-current='page'] {
+  color: var(--green);
+  font-weight: 600;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--green);
+  transition:
+    left 0.4s var(--ease-out),
+    width 0.4s var(--ease-out);
+  pointer-events: none;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  color: #346e3c;
+  transition: color 0.2s ease, transform 0.3s var(--ease-out);
+}
+
+.icon-btn:hover {
+  color: var(--green-deep-hover);
+  transform: translateY(-2px);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  height: 2px;
+  width: 100%;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease-out), opacity 0.3s ease;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding-top: 58px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  min-height: 650px;
+}
+
+/* Circle is attached to the plant: centered behind the visual so the two
+   move together as one unit. */
+.hero-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-46%, -50%);
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: var(--sage-circle);
+  pointer-events: none;
+  z-index: 0;
+  animation: circle-in 1.2s var(--ease-out) both;
+}
+
+@keyframes circle-in {
+  from {
+    opacity: 0;
+    transform: translate(-46%, -50%) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-46%, -50%) scale(1);
+  }
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  padding: 36px 0 70px;
+}
+
+.hero-sprig {
+  position: relative;
+  display: block;
+  width: 264px;
+  height: 142px;
+  margin-bottom: 24px;
+}
+
+.hero-sprig img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 264px;
+  height: auto;
+  transform-origin: 20% 40%;
+}
+
+.hero-sprig-a {
+  animation: sprig-move-a 5s ease-in-out infinite;
+}
+
+.hero-sprig-b {
+  animation: sprig-move-b 5s ease-in-out infinite;
+}
+
+@keyframes sprig-move-a {
+  0%,
+  100% {
+    opacity: 1;
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    opacity: 0;
+    transform: rotate(1.2deg);
+  }
+}
+
+@keyframes sprig-move-b {
+  0%,
+  100% {
+    opacity: 0;
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(1.2deg);
+  }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.65rem, 3vw, 1.85rem);
+  color: var(--ink);
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+}
+
+.hero h1 .accent {
+  color: var(--green-bright);
+}
+
+.hero-sub {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  max-width: 40ch;
+  margin-bottom: 26px;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.chip {
+  background: var(--white);
+  color: var(--green);
+  font-size: 0.79rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-chip);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--green-deep);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 5px 5px 5px 24px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(52, 110, 60, 0.28);
+  transition:
+    background-color 0.25s ease,
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+
+.btn-primary:hover {
+  background: var(--green-deep-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(58, 90, 64, 0.36);
+}
+
+.btn-primary .btn-circle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--green-deep);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn-primary:hover .btn-circle {
+  transform: translateX(3px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--green);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 10px 32px;
+  border-radius: 999px;
+  border: 1px solid #dedacb;
+  transition:
+    border-color 0.25s ease,
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+
+.btn-secondary:hover {
+  border-color: var(--green);
+  background: rgba(52, 110, 60, 0.05);
+  transform: translateY(-3px);
+}
+
+.hero-visual {
+  position: absolute;
+  top: 62px;
+  right: 0;
+  width: min(41vw, 530px);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+}
+
+.hero-visual img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  animation: hero-photo-in 1s 0.15s var(--ease-out) both;
+}
+
+@keyframes hero-photo-in {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Plant picker (Cactus: Spike) ---------- */
+.picker {
+  position: relative;
+  background: linear-gradient(160deg, #ecf2e2 0%, var(--sage-section) 55%, #f0f5eb 100%);
+  padding: 70px 0 0;
+  /* No overflow:hidden here — it would clip the thumbnails that straddle the
+     bottom edge. The watermark is clipped by its own wrapper instead. */
+}
+
+.picker-art {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 440px;
+  max-width: 45%;
+  opacity: 0.5;
+  pointer-events: none;
+  transform-origin: top right;
+  animation: sway 7s ease-in-out infinite;
+}
+
+.picker-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.picker-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 400px;
+}
+
+.picker-photo img {
+  width: min(300px, 90%);
+  height: auto;
+  transition: opacity 0.18s ease, transform 0.25s ease;
+  animation: plant-enter 0.65s var(--ease-out);
+}
+
+/* No scaling — the plant only slides up + fades in (nothing resizes). */
+@keyframes plant-enter {
+  from {
+    opacity: 0;
+    transform: translateY(64px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.picker-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 60%;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(58, 70, 54, 0.22) 0%, rgba(58, 70, 54, 0) 70%);
+}
+
+/* Smart-animate style switch: the outgoing plant + copy fade out, then the
+   incoming image (remounted via key) replays plant-enter to rise up into
+   place while the info column cross-dissolves — mirroring the prototype. */
+.picker-photo.is-switching img {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Only the changing CONTENT animates (name, description, stat values, price) —
+   the labels, icons, stat blocks, and the button shell stay put, and the card
+   never resizes. On re-entry the elements come in one after another (staggered
+   delays), matching the design's "elements entering one after another" note. */
+.picker-info h2,
+.picker-info p,
+.picker-info .pstat b,
+.picker-info .price-val {
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+}
+
+.picker-info h2 {
+  transition-delay: 0.02s;
+}
+.picker-info p {
+  transition-delay: 0.08s;
+}
+.picker-info .pstat b {
+  transition-delay: 0.14s;
+}
+.picker-info .price-val {
+  transition-delay: 0.2s;
+}
+
+.picker-info.is-switching h2,
+.picker-info.is-switching p,
+.picker-info.is-switching .pstat b,
+.picker-info.is-switching .price-val {
+  opacity: 0;
+  transform: translateY(14px);
+  transition-duration: 0.16s;
+  transition-delay: 0s;
+}
+
+.price-val {
+  display: inline-block;
+}
+
+.picker-info h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.45rem, 2.6vw, 1.7rem);
+  color: var(--ink);
+  margin-bottom: 26px;
+}
+
+/* The description sits inside a Reveal wrapper, so target it as a descendant
+   (a direct-child selector would miss it and drop the bottom margin). */
+.picker-info p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #5f6b5a;
+  margin-bottom: 40px;
+}
+
+.picker-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 54px;
+  margin-bottom: 36px;
+}
+
+.pstat {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pstat svg {
+  color: #1f1f1f;
+  flex-shrink: 0;
+}
+
+.pstat small {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.pstat b {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--green-deep);
+  color: var(--white);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 7px 9px 7px 24px;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(58, 90, 64, 0.3);
+  transition:
+    background-color 0.25s ease,
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+
+.btn-add:hover {
+  background: var(--green-deep-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(58, 90, 64, 0.35);
+}
+
+.btn-add .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.btn-add .btn-circle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--green-deep);
+}
+
+/* Straddle the sage/cream section boundary via position (not transform):
+   the .reveal wrapper animates `transform`, and `.reveal.is-visible` sets
+   transform:none — which would wipe out a transform-based offset once the
+   entrance finishes. Using top keeps the straddle after the reveal. */
+.picker-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px 0 0;
+  position: relative;
+  top: 43px;
+  z-index: 3;
+}
+
+.thumb {
+  width: 86px;
+  height: 80px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--white);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-chip);
+  transition:
+    transform 0.3s var(--ease-out),
+    border-color 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumb:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.thumb.is-active {
+  border-color: var(--green);
+}
+
+/* ---------- Products trio ---------- */
+.products {
+  position: relative;
+  padding: 120px 0 90px;
+  margin: 120px 0 0 0;
+}
+
+.products-blob {
+  position: relative;
+  background: var(--sage-blob);
+  border-radius: 80px 80px 48px 48px;
+  padding: 0 44px 44px;
+  margin-top: 110px;
+}
+
+/* Sprig overflows the blob's bottom-left corner at its natural size. */
+.products-sprig {
+  position: absolute;
+  bottom: 0;
+  left: -16px;
+  height: auto;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Pull the card row up so the green blob's top edge crosses each card at
+   ~55% of its height, matching the design where the photos clear the sage
+   panel and the title area overlaps it. */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  max-width: 700px;
+  margin-inline: auto;
+  transform: translateY(-168px);
+  margin-bottom: -120px;
+}
+
+.product-card {
+  background: var(--white);
+  border: 1px solid #0000000f;
+  border-radius: 16px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 14px 34px rgba(69, 75, 66, 0.1);
+}
+
+.product-media {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: #f2f1ec;
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+
+/* Hover only zooms the image — nothing else in the card moves. */
+.product-card:hover .product-media img {
+  transform: scale(1.16);
+}
+
+.price-badge {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  left: 12px;
+  background: var(--green-deep);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 16px 4px 10px;
+}
+
+.product-card h3 span {
+  display: block;
+}
+
+.view-details {
+  display: inline-block;
+  margin: 0 4px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--green);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.view-details:hover {
+  border-color: var(--green);
+}
+
+.products-tagline {
+  text-align: center;
+  color: var(--green);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.7;
+  padding-bottom: 8px;
+}
+
+/* ---------- Care steps ---------- */
+.care-steps {
+  padding: 40px 0 90px;
+}
+
+.steps-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 54px;
+}
+
+.steps-title h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--green);
+  background: #e4efdd;
+  padding: 12px 34px;
+  border-radius: 999px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  align-items: start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.step {
+  width: 190px;
+  text-align: center;
+}
+
+.step-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: 14px;
+  background: #ecf2e4;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.step:hover .step-icon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.step p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.step-connector {
+  width: 74px;
+  height: auto;
+  margin-top: 34px;
+}
+
+/* ---------- Seasonal care ---------- */
+.seasonal {
+  padding: 0 0 100px;
+}
+
+.seasonal-card {
+  position: relative;
+  background: var(--sage-card);
+  border-radius: 26px;
+  padding: 52px 52px 56px;
+}
+
+.seasonal-card h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.4vw, 1.6rem);
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.seasonal-sub {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.seasons-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px;
+  max-width: 860px;
+}
+
+.season-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.season-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* background + color are set per season inline */
+}
+
+.season-head h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.season-head small {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.season-tips {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tip-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.tip-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(69, 75, 66, 0.06);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+}
+
+.tip-chip:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-chip);
+}
+
+.tip-chip svg {
+  flex-shrink: 0;
+}
+
+.hanging-plant {
+  position: absolute;
+  top: 0;
+  right: -28px;
+  width: 150px;
+  height: 306px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Two hanging-plant states (art_3 / art_4) stacked and cross-faded so the
+   plant looks like it is gently moving in the air (per the design note). */
+.hanging-plant img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transform-origin: top center;
+}
+
+.hanging-plant-a {
+  animation: air-move-a 4.5s ease-in-out infinite;
+}
+
+.hanging-plant-b {
+  animation: air-move-b 4.5s ease-in-out infinite;
+}
+
+@keyframes air-move-a {
+  0%,
+  100% {
+    opacity: 1;
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    opacity: 0;
+    transform: rotate(1.5deg);
+  }
+}
+
+@keyframes air-move-b {
+  0%,
+  100% {
+    opacity: 0;
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(1.5deg);
+  }
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+  padding: 0 0 110px;
+}
+
+.newsletter-card {
+  position: relative;
+  background: #363d37;
+  border-radius: 26px;
+  padding: 32px 24px 32px 24px;
+  text-align: center;
+  color: var(--cream);
+  overflow: hidden;
+}
+
+.newsletter-sprig {
+  position: absolute;
+  top: 50%;
+  right: 180px;
+  transform: translateY(-50%);
+  height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.newsletter-card h2 {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f6f5ef;
+  margin-bottom: 16px;
+}
+
+.newsletter-card > p {
+  position: relative;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: rgba(242, 240, 231, 0.68);
+  max-width: 52ch;
+  line-height: 1.6;
+  margin: 0 auto 34px;
+}
+
+/* Input and Send are two separate pills side by side (Send is NOT inside
+   the input field), matching the design. */
+.newsletter-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  width: min(360px, 100%);
+  height: 56px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 400;
+  transition: background-color 0.25s ease;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(242, 240, 231, 0.5);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.btn-send {
+  height: 56px;
+  background: #eef0e9;
+  color: var(--green);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 36px;
+  border-radius: 999px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s var(--ease-out);
+}
+
+.btn-send:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+}
+
+.newsletter-status {
+  margin-top: 18px !important;
+  color: #b5d1a5 !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--dark);
+  color: rgba(242, 240, 231, 0.85);
+  padding: 26px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-inner p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(242, 240, 231, 0.9);
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-row a {
+  display: inline-flex;
+  transition: transform 0.3s var(--ease-out), opacity 0.2s ease;
+}
+
+.social-row a:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .hero-inner {
+    min-height: 0;
+  }
+
+  .hero-circle {
+    right: -260px;
+    top: 160px;
+  }
+
+  .hero-visual {
+    position: static;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-visual img {
+    width: min(420px, 80%);
+  }
+
+  .picker-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .picker-photo {
+    min-height: 300px;
+  }
+
+  .picker-photo img {
+    width: min(240px, 70%);
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    justify-items: center;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .seasons-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hanging-plant {
+    width: 100px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 680px) {
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(300px, 82vw);
+    background: var(--cream);
+    box-shadow: -18px 0 40px rgba(69, 75, 66, 0.18);
+    transform: translateX(105%);
+    transition: transform 0.45s var(--ease-out);
+    padding: 100px 34px;
+  }
+
+  .main-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .main-nav a {
+    font-size: 1.1rem;
+    padding: 10px 2px;
+  }
+
+  .main-nav {
+    align-self: auto;
+    display: block;
+  }
+
+  .nav-indicator {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+    z-index: 60;
+  }
+
+  .products-blob {
+    padding: 0 20px 32px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    transform: translateY(-70px);
+    margin-bottom: -40px;
+  }
+
+  .products {
+    padding-top: 90px;
+  }
+
+  .seasonal-card {
+    padding: 36px 24px 42px;
+  }
+
+  .seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .picker-thumbs {
+    flex-wrap: wrap;
+  }
+
+  .picker-stats {
+    gap: 24px;
+  }
+
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
