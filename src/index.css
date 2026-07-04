@@ -3,35 +3,35 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/Tomorrow-700.woff2') format('woff2');
+  src: url('../public/fonts/Tomorrow-700.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/Ubuntu-700.woff2') format('woff2');
+  src: url('../public/fonts/Ubuntu-700.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/Poppins-400.woff2') format('woff2');
+  src: url('../public/fonts/Poppins-400.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/Poppins-500.woff2') format('woff2');
+  src: url('../public/fonts/Poppins-500.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/Poppins-600.woff2') format('woff2');
+  src: url('../public/fonts/Poppins-600.woff2') format('woff2');
 }
 
 :root {

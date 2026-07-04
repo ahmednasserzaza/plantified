@@ -3,6 +3,8 @@ import { ArrowRightDesignIcon } from './designIcons'
 import art1 from '../assets/art_1.svg'
 import art2 from '../assets/art_2.svg'
 
+const heroMonsteraSrc = `${import.meta.env.BASE_URL}hero-monstera.webp`
+
 export default function Hero() {
   return (
     <section id="home" className="hero">
@@ -52,7 +54,7 @@ export default function Hero() {
         <div className="hero-visual">
           <span className="hero-circle" aria-hidden />
           <img
-            src="/hero-monstera.webp"
+            src={heroMonsteraSrc}
             alt="A hand holding a monstera plant in a white pot"
             width="443"
             height="449"
